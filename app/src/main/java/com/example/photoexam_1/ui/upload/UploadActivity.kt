@@ -53,10 +53,7 @@ class UploadActivity : AppCompatActivity() {
 
         viewModel.loading.observe(this) { showLoading(it) }
         viewModel.uploadSuccess.observe(this) {
-            if (showSuccess) {
-                uploadAlertDialog()
-                showSuccess = false
-            }
+            finish()
         }
     }
 

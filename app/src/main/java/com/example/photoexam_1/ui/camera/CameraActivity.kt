@@ -13,6 +13,8 @@ import android.widget.Toast
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
 import androidx.camera.core.ImageCaptureException
+import androidx.camera.core.Preview
+import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import com.example.photoexam_1.databinding.ActivityCameraBinding
 import com.example.photoexam_1.utils.createCustomTempFile
@@ -31,6 +33,7 @@ class CameraActivity : AppCompatActivity() {
     public override fun onResume() {
         super.onResume()
         hideSystemUI()
+        startCamera()
     }
 
     override fun onStart() {
@@ -40,6 +43,32 @@ class CameraActivity : AppCompatActivity() {
     override fun onStop() {
         super.onStop()
         orientationEventListener.disable()
+    }
+
+    private var cameraSelector: CameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
+    private fun startCamera() {
+        val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
+
+        cameraProviderFuture.addListener({
+            val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
+            val preview = Preview.Builder()
+                .build()
+                .also { it.setSurfaceProvider(binding.viewFinder.surfaceProvider) }
+            imageCapture = ImageCapture.Builder().build()
+
+            try {
+                cameraProvider.unbindAll()
+                cameraProvider.bindToLifecycle(
+                    this,
+                    cameraSelector,
+                    preview,
+                    imageCapture
+                )
+            }catch (exc: Exception) {
+                Toast.makeText(this@CameraActivity, "Gagal memunculkan kamera.", Toast.LENGTH_SHORT).show()
+                Log.e(TAG, "startCamera: ${exc.message}")
+            }
+        }, ContextCompat.getMainExecutor(this))
     }
 
     private fun takePhoto() {

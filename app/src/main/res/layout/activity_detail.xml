@@ -36,9 +36,10 @@
         android:id="@+id/txtStudentName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginStart="8dp"
         android:textAlignment="textStart"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/cardView"
         app:layout_constraintTop_toBottomOf="@+id/toolbarDetail"
@@ -48,7 +49,10 @@
         android:id="@+id/txtDescDetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="32dp"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/txtStudentName"
         app:layout_constraintTop_toBottomOf="@+id/txtStudentName"
         tools:text="@string/desc_file_student" />
@@ -63,6 +67,17 @@
         app:layout_constraintStart_toStartOf="@+id/txtDescDetail"
         app:layout_constraintTop_toBottomOf="@+id/txtDescDetail"
         android:text="@string/score" />
+
+    <TextView
+        android:id="@+id/txtFileDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:text="@string/date_post"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtScore"
+        tools:text="25/12/2023" />
 
     <TextView
         android:id="@+id/textView"
@@ -94,7 +109,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/txtAnswerKey"
+                    android:id="@+id/txtStudentAnswer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
@@ -136,7 +151,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/txtStudentAnswer"
+                    android:id="@+id/txtAnswerKey"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"

@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.photoexam_1.data.model.User
 import com.example.photoexam_1.data.preference.Preference
+import com.example.photoexam_1.data.remote.response.DeleteResponse
 import com.example.photoexam_1.data.remote.response.LoginResponse
 import com.example.photoexam_1.data.remote.response.PhotoEssayResponse
 import com.example.photoexam_1.data.remote.response.RegisResponse
@@ -24,6 +25,7 @@ class Repository(
     val loginSuccessfull = MutableLiveData<LoginResponse>()
     val uploadSuccessfull = MutableLiveData<UploadResponse>()
     val photoSuccessfull = MutableLiveData<PhotoEssayResponse>()
+    val deleteSuccessfull = MutableLiveData<DeleteResponse>()
 
     suspend fun register(email: String, password: String) {
         loading.value = true
@@ -99,6 +101,19 @@ class Repository(
         } catch (e: Exception) {
             e.printStackTrace()
             Log.e("Repository Upload", "Error : $e")
+            loading.value = false
+        }
+    }
+
+    suspend fun deletePhoto(token: String, fileId: String) {
+        loading.value = true
+        try {
+            val deletePhoto = ApiConfig.getApiService(token).deletePhoto(fileId)
+            loading.value = false
+            deleteSuccessfull.value = deletePhoto
+        } catch (e: Exception) {
+            e.printStackTrace()
+            Log.e("Repository Delete Photo", "Error : $e")
             loading.value = false
         }
     }

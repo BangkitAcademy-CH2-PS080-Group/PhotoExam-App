@@ -17,7 +17,7 @@ data class DataItem(
 	@field:SerializedName("createdAt")
 	val createdAt: String? = null,
 
-	@field:SerializedName("answerKey")
+	@field:SerializedName("keyAnswer")
 	val answerKey: String? = null,
 
 	@field:SerializedName("score")

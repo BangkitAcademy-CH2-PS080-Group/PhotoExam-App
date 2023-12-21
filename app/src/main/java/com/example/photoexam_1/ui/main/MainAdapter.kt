@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.photoexam_1.data.model.PhotoEssay
 import com.example.photoexam_1.data.remote.response.DataItem
 import com.example.photoexam_1.databinding.MainItemBinding
@@ -20,6 +21,10 @@ class MainAdapter: ListAdapter<DataItem, MainAdapter.MyViewHolder>(DIFF_CALLBACK
             view.txtStudentName.text = itemPhoto.studentName
             view.txtDescFile.text = itemPhoto.description
             view.txtFileDate.text = itemPhoto.createdAt?.formattedDate()
+
+            Glide.with(itemView.context)
+                .load(itemPhoto.storageUrl)
+                .into(view.ivPhotoEssay)
         }
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -32,15 +37,15 @@ class MainAdapter: ListAdapter<DataItem, MainAdapter.MyViewHolder>(DIFF_CALLBACK
         holder.bind(listPhoto)
 
         holder.itemView.setOnClickListener {
-            val date = listPhoto.createdAt!!
-            val answerKey = listPhoto.answerKey
-            val score = listPhoto.score
-            val fileName = listPhoto.fileName!!
-            val studentName = listPhoto.studentName!!
-            val description = listPhoto.description!!
-            val studentAnswer = listPhoto.studentAnswer
-            val storageUrl = listPhoto.storageUrl!!
-            val fileId = listPhoto.fileId!!
+            val date = listPhoto?.createdAt ?: ""
+            val answerKey = listPhoto?.answerKey ?: ""
+            val score = listPhoto?.score ?: 0
+            val fileName = listPhoto?.fileName ?: ""
+            val studentName = listPhoto?.studentName ?: ""
+            val description = listPhoto?.description ?: ""
+            val studentAnswer = listPhoto?.studentAnswer ?: ""
+            val storageUrl = listPhoto?.storageUrl ?: ""
+            val fileId = listPhoto?.fileId ?: ""
 
             val passingData = PhotoEssay(date, answerKey, score, fileName, studentName, description, studentAnswer, storageUrl, fileId)
             val moveToDetail = Intent(holder.itemView.context, DetailActivity::class.java)
@@ -48,8 +53,6 @@ class MainAdapter: ListAdapter<DataItem, MainAdapter.MyViewHolder>(DIFF_CALLBACK
             holder.itemView.context.startActivity(moveToDetail)
         }
     }
-
-
 
     companion object {
         val DIFF_CALLBACK = object: DiffUtil.ItemCallback<DataItem>() {

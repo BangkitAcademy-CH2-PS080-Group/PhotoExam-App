@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.photoexam_1.data.Repository
 import com.example.photoexam_1.di.Injection
 import com.example.photoexam_1.ui.authentication.AuthViewModel
+import com.example.photoexam_1.ui.detail.DetailViewModel
 import com.example.photoexam_1.ui.main.MainViewModel
 import com.example.photoexam_1.ui.upload.UploadViewModel
 
@@ -24,6 +25,9 @@ class ViewModelFactory private constructor(
             }
             modelClass.isAssignableFrom(UploadViewModel::class.java) -> {
                 UploadViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(DetailViewModel::class.java) -> {
+                DetailViewModel(repository) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel Class")
         }
