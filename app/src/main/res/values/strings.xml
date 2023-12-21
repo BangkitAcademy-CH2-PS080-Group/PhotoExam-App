@@ -1,0 +1,74 @@
+<resources>
+    <string name="app_name">photoExam_1</string>
+
+    <!--  Menu Bar Item  -->
+    <string name="logoutMenu">Log_Out</string>
+
+    <!--  Text in Menu Item  -->
+    <string name="title_folder">Title</string>
+    <string name="total_task">Total Task</string>
+
+    <!--  Main Activity Description  -->
+    <string name="addDesc">Floating_Add_Button</string>
+    <string name="logout">Keluar</string>
+    <string name="msgLogout">Yakin Mau Keluar? :(</string>
+    <string name="yes">Iya</string>
+    <string name="no">Tidak</string>
+    <string name="no_data">Data Tidak Ada</string>
+
+    <!--  Upload Activity Description  -->
+    <string name="cameraCapt">Camera</string>
+    <string name="galleryCapt">Gallery</string>
+    <string name="picturePlaceholder">Picture_PlaceHolder</string>
+    <string name="save">Save</string>
+    <string name="scan">Scan</string>
+    <string name="descPhoto">Deskripsi Foto</string>
+    <string name="msgUpload">Berhasil Upload</string>
+    <string name="success">Berhasil</string>
+    <string name="emptyPhoto">Gambar tidak boleh kosong</string>
+    <string name="emptyDesc">Deskripsi tidak boleh kosong</string>
+    <string name="emptyStudentName">Nama Siswa tidak boleh kosong</string>
+    <string name="emptyAnswerKey">Kunci Jawaban tidak boleh kosong</string>
+    <string name="empty_image_warning">Silakan masukkan berkas gambar terlebih dahulu.</string>
+
+    <!--  Camera Activity Description  -->
+    <string name="camera">Camera_Capture</string>
+
+    <!--  List Photo Activity Description  -->
+    <string name="studentName">Nama Siswa</string>
+    <string name="desc_file_student">Description for this file</string>
+    <string name="score">score : %s</string>
+    <string name="descImageView">file_icon</string>
+    <string name="date_post">%s</string>
+
+    <!--  Detail Activity Description  -->
+    <string name="imageDetail">Detail image</string>
+    <string name="answer_key">Kunci Jawaban</string>
+    <string name="student_answer">Jawaban Siswa</string>
+    <string name="desc_answer_student">Deskripsi jawaban siswa</string>
+    <string name="desc_answer_key">Deskripsi kunci jawaban</string>
+    <string name="btn_delete">Delete</string>
+
+    <!-- Login & Regis Fragment Description -->
+    <string name="welcome">Selamat Datang,</string>
+    <string name="descWelcome">Masuk untuk melanjutkan</string>
+    <string name="descRegis">Buat Akun</string>
+    <string name="additional_information">Untuk memulai sekarang!!</string>
+    <string name="email_placeholder">Alamat Email</string>
+    <string name="pw_placeholder">Kata Sandi</string>
+    <string name="repeat_pw">Ulangi Kata Sandi</string>
+    <string name="login">Masuk</string>
+    <string name="desc_regis">Apakah anda belum memiliki akun?</string>
+    <string name="desc_login">Sudah Punya Akun?</string>
+    <string name="regis">Daftar</string>
+    <string name="msgLogin">Anda Berhasil Login</string>
+    <string name="msgRegis">Anda berhasil Mendaftar. Silahkan Login</string>
+    <string name="regisSuccess">Berhasil Register</string>
+    <string name="next">Lanjut</string>
+    <string name="back">Kembali</string>
+    <string name="login_failed">Gagal Masuk</string>
+    <string name="loginRegis_failed_msg">Email atau Password tidak boleh kosong dan Masukkan Email dengan benar, password harus 6 karakter!!</string>
+    <string name="regis_failed">Gagal Daftar</string>
+    <string name="password_confirmation">Password tidak cocok</string>
+
+</resources>
