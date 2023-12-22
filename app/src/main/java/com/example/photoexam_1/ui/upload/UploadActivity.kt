@@ -48,14 +48,15 @@ class UploadActivity : AppCompatActivity() {
 
         binding.btnGallery.setOnClickListener{ startGallery() }
         binding.btnCamera.setOnClickListener { startCameraX() }
-        binding.btnSave.setOnClickListener { savePhoto() }
+        binding.btnSave.setOnClickListener {
+            savePhoto()
+        }
         binding.toolbarUpload.setNavigationOnClickListener { finish() }
 
         viewModel.loading.observe(this) { showLoading(it) }
-        viewModel.uploadSuccess.observe(this) {
-            if (showSuccess) {
+        if (showSuccess) {
+            viewModel.uploadSuccess.observe(this) {
                 uploadAlertDialog()
-                showSuccess = false
             }
         }
         viewModel.errorUpload.observe(this) {
@@ -71,9 +72,10 @@ class UploadActivity : AppCompatActivity() {
             setMessage(R.string.msgUpload)
             setPositiveButton(R.string.next) { _, _ ->
                 val intent = Intent(context, MainActivity::class.java)
-                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)
             }
+            create()
             show()
         }
     }

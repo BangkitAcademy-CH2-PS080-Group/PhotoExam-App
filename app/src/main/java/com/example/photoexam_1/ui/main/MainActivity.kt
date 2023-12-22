@@ -51,6 +51,9 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        viewModel.photoSuccess.observe(this) {
+            setRecyclerView(it.data)
+        }
         viewModel.errorGetPhoto.observe(this) {
             it.let { errorResponse ->
                 Toast.makeText(this, errorResponse.message, Toast.LENGTH_SHORT).show()
@@ -61,6 +64,7 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         viewModel.photoSuccess.observe(this) {
+            refreshData()
             setRecyclerView(it.data)
         }
     }
@@ -85,6 +89,11 @@ class MainActivity : AppCompatActivity() {
         } else {
             binding.MainProgressBar.visibility = View.INVISIBLE
         }
+    }
+
+    private fun refreshData() {
+        val user = viewModel.getUser().value
+        user?.token?.let { viewModel.getAllPhoto(it) }
     }
 
     private fun logOutAlertDialog() {

@@ -64,10 +64,10 @@ class DetailActivity : AppCompatActivity() {
                 setPositiveButton(R.string.yes) { _, _ ->
                     detailPhoto?.fileId?.let { fileId ->
                         token?.let { viewModel.deletePhoto(it, fileId) }
-                        viewModel.getAllPhoto(token!!)
                     }
+                    refreshData()
                     val intent = Intent(context, MainActivity::class.java)
-                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
                 }
                 show()
@@ -92,6 +92,11 @@ class DetailActivity : AppCompatActivity() {
 
     private fun showLoading(isLoading: Boolean) {
         binding.detailProgressBar.visibility = if (isLoading) View.VISIBLE else View.INVISIBLE
+    }
+
+    private fun refreshData() {
+        val user = viewModel.getUser().value
+        user?.token?.let { viewModel.getAllPhoto(it) }
     }
 
     companion object {

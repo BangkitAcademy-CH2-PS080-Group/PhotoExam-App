@@ -52,7 +52,7 @@
     <string name="desc_answer_key">Deskripsi kunci jawaban</string>
     <string name="btn_delete">Hapus</string>
     <string name="deleteTitle">Hapus Data</string>
-    <string name="deleteMsg">Apakah anda yakit ingin menghapus data ini?</string>
+    <string name="deleteMsg">Apakah anda yakin ingin menghapus data ini?</string>
 
     <!-- Login & Regis Fragment Description -->
     <string name="welcome">Selamat Datang,</string>

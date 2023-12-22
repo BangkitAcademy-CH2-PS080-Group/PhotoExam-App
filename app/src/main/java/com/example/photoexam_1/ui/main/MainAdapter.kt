@@ -39,7 +39,7 @@ class MainAdapter: ListAdapter<DataItem, MainAdapter.MyViewHolder>(DIFF_CALLBACK
         holder.itemView.setOnClickListener {
             val date = listPhoto?.createdAt ?: ""
             val answerKey = listPhoto?.answerKey ?: ""
-            val score = listPhoto?.score ?: 0
+            val score = listPhoto?.score
             val fileName = listPhoto?.fileName ?: ""
             val studentName = listPhoto?.studentName ?: ""
             val description = listPhoto?.description ?: ""
@@ -47,7 +47,7 @@ class MainAdapter: ListAdapter<DataItem, MainAdapter.MyViewHolder>(DIFF_CALLBACK
             val storageUrl = listPhoto?.storageUrl ?: ""
             val fileId = listPhoto?.fileId ?: ""
 
-            val passingData = PhotoEssay(date, answerKey, score, fileName, studentName, description, studentAnswer, storageUrl, fileId)
+            val passingData = PhotoEssay(date, answerKey, score!!, fileName, studentName, description, studentAnswer, storageUrl, fileId)
             val moveToDetail = Intent(holder.itemView.context, DetailActivity::class.java)
             moveToDetail.putExtra(DetailActivity.EXTRA_DETAIL_STORY, passingData)
             holder.itemView.context.startActivity(moveToDetail)
