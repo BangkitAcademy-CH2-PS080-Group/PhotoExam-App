@@ -53,7 +53,15 @@ class UploadActivity : AppCompatActivity() {
 
         viewModel.loading.observe(this) { showLoading(it) }
         viewModel.uploadSuccess.observe(this) {
-            finish()
+            if (showSuccess) {
+                uploadAlertDialog()
+                showSuccess = false
+            }
+        }
+        viewModel.errorUpload.observe(this) {
+            it.let { errorResponse ->
+                Toast.makeText(this, errorResponse.message, Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -112,7 +120,7 @@ class UploadActivity : AppCompatActivity() {
             val answerKeyRequestBody = answerKey.toRequestBody("text/plain".toMediaType())
             val requestImageFile = imageFile.asRequestBody("image/jpeg".toMediaType())
             val multipartBody = MultipartBody.Part.createFormData(
-                "photo",
+                "documents",
                 imageFile.name,
                 requestImageFile
             )

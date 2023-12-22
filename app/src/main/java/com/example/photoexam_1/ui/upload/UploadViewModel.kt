@@ -14,6 +14,7 @@ class UploadViewModel(private val repository: Repository) : ViewModel() {
 
     val loading = repository.loading
     val uploadSuccess = repository.uploadSuccessfull
+    val errorUpload = repository.errorUpload
 
     fun uploadPhoto(
         token: String,
@@ -26,5 +27,7 @@ class UploadViewModel(private val repository: Repository) : ViewModel() {
         }
     }
 
-    fun getUser(): LiveData<User> { return repository.getSession().asLiveData() }
+    fun getUser(): LiveData<User> {
+        return repository.getSession().asLiveData()
+    }
 }

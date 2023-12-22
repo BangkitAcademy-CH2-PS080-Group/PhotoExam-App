@@ -44,10 +44,15 @@
     <!--  Detail Activity Description  -->
     <string name="imageDetail">Detail image</string>
     <string name="answer_key">Kunci Jawaban</string>
+    <string name="result">Benar/Salah</string>
+    <string name="correct">Benar</string>
+    <string name="wrong">Salah</string>
     <string name="student_answer">Jawaban Siswa</string>
     <string name="desc_answer_student">Deskripsi jawaban siswa</string>
     <string name="desc_answer_key">Deskripsi kunci jawaban</string>
-    <string name="btn_delete">Delete</string>
+    <string name="btn_delete">Hapus</string>
+    <string name="deleteTitle">Hapus Data</string>
+    <string name="deleteMsg">Apakah anda yakit ingin menghapus data ini?</string>
 
     <!-- Login & Regis Fragment Description -->
     <string name="welcome">Selamat Datang,</string>

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -38,7 +39,6 @@ class MainActivity : AppCompatActivity() {
         }
         binding.rvMain.layoutManager = LinearLayoutManager(this)
         viewModel.loading.observe(this) { showLoading(it) }
-        viewModel.photoSuccess.observe(this) { setRecyclerView(it.data) }
 
         binding.btnAdd.setOnClickListener { startActivity(Intent(this, UploadActivity::class.java)) }
 
@@ -51,6 +51,18 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        viewModel.errorGetPhoto.observe(this) {
+            it.let { errorResponse ->
+                Toast.makeText(this, errorResponse.message, Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.photoSuccess.observe(this) {
+            setRecyclerView(it.data)
+        }
     }
 
     private fun setRecyclerView(listPhoto: List<DataItem>){

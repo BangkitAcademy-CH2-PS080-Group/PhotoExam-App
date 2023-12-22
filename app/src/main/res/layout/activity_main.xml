@@ -6,24 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".ui.main.MainActivity">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="64dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarMain"
+        tools:listitem="@layout/main_item" />
+
+
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbarMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/primary_color"
-        app:title="@string/email_placeholder"
-        app:titleTextColor="@color/white"
-        app:menu="@menu/main_menu"
-        tools:ignore="MissingConstraints" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_main"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarMain"
-        tools:listitem="@layout/main_item" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/main_menu"
+        app:title="@string/email_placeholder"
+        app:titleTextColor="@color/white"
+        tools:ignore="MissingConstraints" />
 
     <ProgressBar
         android:id="@+id/MainProgressBar"
@@ -68,5 +74,7 @@
         app:maxImageSize="@android:dimen/app_icon_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

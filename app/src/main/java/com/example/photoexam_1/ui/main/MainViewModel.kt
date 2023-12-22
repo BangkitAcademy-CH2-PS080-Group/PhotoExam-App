@@ -12,10 +12,21 @@ class MainViewModel (private val repository: Repository) : ViewModel() {
 
     val photoSuccess = repository.photoSuccessfull
     val loading = repository.loading
+    val errorGetPhoto = repository.errorGet
 
-    fun logOut() { viewModelScope.launch{ repository.logOut() } }
+    fun logOut() {
+        viewModelScope.launch {
+            repository.logOut()
+        }
+    }
 
-    fun getUser(): LiveData<User> { return repository.getSession().asLiveData() }
+    fun getUser(): LiveData<User> {
+        return repository.getSession().asLiveData()
+    }
 
-    fun getAllPhoto(token: String){ viewModelScope.launch { repository.getAllPhoto(token) }}
+    fun getAllPhoto(token: String){
+        viewModelScope.launch {
+            repository.getAllPhoto(token)
+        }
+    }
 }

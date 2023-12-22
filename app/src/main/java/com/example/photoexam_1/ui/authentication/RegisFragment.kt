@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import com.example.photoexam_1.R
 import com.example.photoexam_1.databinding.FragmentRegisBinding
@@ -71,6 +72,11 @@ class RegisFragment : Fragment() {
 
         viewModel.loading.observe(viewLifecycleOwner) { showLoading(it) }
         viewModel.regisSuccess.observe(viewLifecycleOwner) { alertDialog() }
+        viewModel.errorRegis.observe(viewLifecycleOwner) {
+            it.let { errorResponse ->
+                Toast.makeText(requireActivity(), errorResponse.message, Toast.LENGTH_SHORT).show()
+            }
+        }
 
     }
 

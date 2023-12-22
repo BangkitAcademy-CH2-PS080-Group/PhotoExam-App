@@ -13,6 +13,8 @@ class AuthViewModel(private val repository: Repository): ViewModel() {
     val loginSuccess = repository.loginSuccessfull
     val regisSuccess = repository.registerSuccessfull
     val loading = repository.loading
+    val errorLogin = repository.errorLogin
+    val errorRegis = repository.errorRegis
 
     fun getUser(): LiveData<User> {
         return repository.getSession().asLiveData()

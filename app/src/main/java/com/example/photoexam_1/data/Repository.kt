@@ -9,6 +9,12 @@ import com.example.photoexam_1.data.remote.response.LoginResponse
 import com.example.photoexam_1.data.remote.response.PhotoEssayResponse
 import com.example.photoexam_1.data.remote.response.RegisResponse
 import com.example.photoexam_1.data.remote.response.UploadResponse
+import com.example.photoexam_1.data.remote.response.error.DeleteErrorResponse
+import com.example.photoexam_1.data.remote.response.error.ErrorLoginResponse
+import com.example.photoexam_1.data.remote.response.error.GetAllPhotoErrorResponse
+import com.example.photoexam_1.data.remote.response.error.LoginErrorResponse
+import com.example.photoexam_1.data.remote.response.error.RegisErrorResponse
+import com.example.photoexam_1.data.remote.response.error.UploadErrorResponse
 import com.example.photoexam_1.data.remote.retrofit.ApiConfig
 import com.example.photoexam_1.data.remote.retrofit.ApiService
 import kotlinx.coroutines.flow.Flow
@@ -26,6 +32,12 @@ class Repository(
     val uploadSuccessfull = MutableLiveData<UploadResponse>()
     val photoSuccessfull = MutableLiveData<PhotoEssayResponse>()
     val deleteSuccessfull = MutableLiveData<DeleteResponse>()
+
+    val errorUpload = MutableLiveData<UploadErrorResponse>()
+    val errorGet = MutableLiveData<GetAllPhotoErrorResponse>()
+    val errorLogin = MutableLiveData<LoginErrorResponse>()
+    val errorRegis = MutableLiveData<RegisErrorResponse>()
+    val deleteError = MutableLiveData<DeleteErrorResponse>()
 
     suspend fun register(email: String, password: String) {
         loading.value = true

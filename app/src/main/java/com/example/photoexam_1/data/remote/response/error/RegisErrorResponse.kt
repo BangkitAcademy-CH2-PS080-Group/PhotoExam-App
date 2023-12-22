@@ -2,13 +2,13 @@ package com.example.photoexam_1.data.remote.response.error
 
 import com.google.gson.annotations.SerializedName
 
-data class RegisErrorResponse(
+data class ErrorRegisItem(
 
 	@field:SerializedName("error")
-	val error: List<ErrorRegisItem?>? = null
+	val error: List<RegisErrorResponse?>? = null
 )
 
-data class ErrorRegisItem(
+data class RegisErrorResponse(
 
 	@field:SerializedName("code")
 	val code: String? = null,

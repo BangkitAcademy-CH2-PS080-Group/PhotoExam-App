@@ -7,11 +7,11 @@ import kotlinx.parcelize.Parcelize
 data class PhotoEssay(
     val createdAt: String,
     val answerKey: String,
-    val score: Int? = null,
+    val score: Int,
     val fileName: String,
     val studentName: String,
     val description: String,
-    val studentAnswer: String? = null,
+    val studentAnswer: String,
     val storageUrl: String,
     val fileId: String
 ): Parcelable

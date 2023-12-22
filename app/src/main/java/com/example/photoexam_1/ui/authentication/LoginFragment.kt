@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.LifecycleOwner
 import com.example.photoexam_1.R
@@ -64,6 +65,11 @@ class LoginFragment : Fragment() {
         viewModel.loading.observe(viewLifecycleOwner){ showLoading(it) }
         viewModel.loginSuccess.observe(viewLifecycleOwner) {
             alertDialog()
+        }
+        viewModel.errorLogin.observe(viewLifecycleOwner) {
+            it.let { errorResponse ->
+                Toast.makeText(requireActivity(), errorResponse.message, Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

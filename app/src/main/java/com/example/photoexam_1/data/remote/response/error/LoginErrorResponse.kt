@@ -5,10 +5,10 @@ import com.google.gson.annotations.SerializedName
 data class ErrorLoginResponse(
 
 	@field:SerializedName("error")
-	val error: List<ErrorLoginItem?>? = null
+	val error: List<LoginErrorResponse?>? = null
 )
 
-data class ErrorLoginItem(
+data class LoginErrorResponse(
 
 	@field:SerializedName("code")
 	val code: String? = null,

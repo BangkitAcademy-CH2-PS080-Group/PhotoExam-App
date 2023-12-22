@@ -2,13 +2,13 @@ package com.example.photoexam_1.data.remote.response.error
 
 import com.google.gson.annotations.SerializedName
 
-data class GetAllPhotoErrorResponse(
+data class Error(
 
 	@field:SerializedName("error")
 	val error: Error? = null
 )
 
-data class Error(
+data class GetAllPhotoErrorResponse(
 
 	@field:SerializedName("code")
 	val code: String? = null,

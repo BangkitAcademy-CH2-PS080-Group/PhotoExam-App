@@ -13,10 +13,17 @@ class DetailViewModel(private val repository: Repository): ViewModel() {
 
     val deleteSuccess: LiveData<DeleteResponse> = repository.deleteSuccessfull
     val loading = repository.loading
+    val errorDelete = repository.deleteError
 
     fun deletePhoto(token: String, fileId: String) {
         viewModelScope.launch {
             repository.deletePhoto(token,fileId)
+        }
+    }
+
+    fun getAllPhoto(token: String){
+        viewModelScope.launch {
+            repository.getAllPhoto(token)
         }
     }
 
